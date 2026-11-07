@@ -7,7 +7,7 @@ def embedding_client():
 
 if __name__ == "__main__":
     emb = embedding_client()
-    vector = emb.embed_query("Kulaklığımı kaybettim, nereye başvurmalıyım?")
+    vector = emb.embed_query("Okul nerde?")
     print("Model:", EMBED_MODEL)
     print("Boyut:", len(vector))
     print("İlk 5 değer:", [round(x, 4) for x in vector[:5]])

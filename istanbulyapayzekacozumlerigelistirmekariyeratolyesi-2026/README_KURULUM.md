@@ -1,73 +1,73 @@
-# BTK Akademi — Gün 5 ve 6 RAG Atölyesi (Kampüs Asistanı)
+# Kurulum
 
-**Amaç:** LangChain + yerel Ollama + ChromaDB ile 5. gün bilgi arama altyapısı, 6. gün kaynaklı RAG oluşturmak. Tüm dokümanlar eğitim amacıyla kurgulanmıştır. Gerçek kişisel veri kullanmayın.
+Kampüs asistanı alıştırması yerel Ollama ile çalışır. Belgeler kurgusaldır; gerçek kişisel veri koymayın. Python dosyaları ve `data/` klasörü `week3/proje1/` içindedir. Ollama ile Qwen modeli bu klasörün dışında, makinede durur. Hiçbir script Ollama'yı başlatmaz.
 
-## Ders öncesi zorunlu kurulum (Windows PowerShell)
+## 1. Ollama'yı ayağa kaldır
 
-1. Python **3.11/3.12**, Ollama uygulaması ve VS Code yüklü olsun.
-2. Proje klasöründe terminal açın:
+[ollama.com](https://ollama.com/download) üzerinden kurun. Mac'te menü çubuğu uygulaması açıksa servis dinliyordur. Değilse ayrı bir terminalde şu komutu çalıştırıp pencereyi açık bırakın:
+
+```bash
+ollama serve
+```
+
+Komut bulunamazsa bu makinedeki ikili `~/.local/bin/ollama` yolundadır. Kontrol:
+
+```bash
+curl -sf http://127.0.0.1:11434/api/tags
+```
+
+Cevap gelmeli. 11434 portunu internete açmayın.
+
+## 2. Modelleri indir
+
+Aynı makinede, servis ayaktayken:
+
+```bash
+ollama pull qwen2.5:1.5b
+ollama pull embeddinggemma
+ollama list
+```
+
+Listede `qwen2.5:1.5b` ve `embeddinggemma` görünmeli. İndirmeyi ders sırasında tüm sınıfa aynı anda yaptırmayın.
+
+## 3. Python ortamı
+
+Python 3.11 veya 3.12. Komutları `week3/proje1/` klasöründe çalıştırın:
+
+Windows:
 
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
+```
+
+Mac / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+## 4. Paketleri kur
+
+```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-ollama pull qwen2.5:1.5b
-ollama pull embeddinggemma
-ollama list
 python 00_kurulum_kontrol.py
 ```
 
-PowerShell yürütme politikası engellerse aktivasyon yerine `.\.venv\Scripts\python.exe` komutunu kullanın. `py -3.11` bulunamazsa yüklü Python sürümünü doğrulayın. Mac/Linux: `python3 -m venv .venv`, `source .venv/bin/activate`.
+Kontrol scripti paketlerin ve iki modelin görünüp görünmediğini yazar.
 
-**Not:** Model indirmelerini kesinlikle ilk derste tüm sınıfa aynı anda yaptırmayın; ders öncesinde tamamlatın. `ollama serve` komutunu yalnızca servis zaten çalışmıyorsa çalıştırın. Ollama 11434 portunu internete açmayın.
+## 5. Veriyi koy
 
-## GÜN 5: önerilen komut sırası
+Metinler `week3/proje1/data/` altındadır. `week3/proje1/meta.json` hangi dosyanın hangi birime ait olduğunu söyler. Klasör boşsa belge sayısı 0 olur.
 
-```bash
-python 00_kurulum_kontrol.py
-python d5_01_documents.py
-python d5_02_chunks.py
-python d5_03_embeddings.py
-python d5_04_index.py
-python d5_05_search.py
-```
+## 6. Scripti çalıştır
 
-**GÜN 6:**
+`week3/proje1/` klasöründe, sanal ortam açıkken:
 
 ```bash
-python d6_01_rerank.py
-python d6_02_answer.py
-python d6_03_validate.py
-python d6_04_eval.py
-python d6_05_guvenlik.py
+python dosya.py
 ```
 
-`python -m unittest -v test_logic.py` testleri internet/model olmadan çalışır. Öğrenci sürümünde day6 rerank TODO kodu tamamlanana kadar bazı testler bilerek başarısızdır (red → green). `d6_05_guvenlik.py` model çağrısı yapmadan güven sınırını gösterir; sınıf isterse yanıt üretim koduyla manuel red-team testi yapılır.
-
-## Öğrenci dosyaları
-
-Çalıştırılabilir dosyaların içinde öğretici `TODO` boşlukları vardır. Takıldığınızda eğitmenin referans çözümünden bir önceki aşamanın tamamlanmış kodunu alın. Eğitmen çözümünü baştan kopyalamayın.
-
-## Doğrulama / kapsam sınırlamaları
-
-- `similarity_search` sıralaması, embedding modelinin Türkçe performansına ve chunk boyutuna göre değişir.
-- Lexical reranking gerçek bir ikinci sıralama sinyalidir ama neural cross-encoder değildir; basit bir öğretim yaklaşımıdır.
-- `[K1]` biçimindeki bir atfın geçerli olması yanıtın gerçekten doğru olduğunu **kanıtlamaz**. İnsan değerlendirmesi / kanıt eşleştirme gerekir.
-- Prompt injection savunması yalnızca prompt ile garanti edilmez. Kurumsal sistemde erişim kontrolü kaynak alma işleminden önce zorlanmalıdır.
-- LangChain/ChromaDB paketleri bu dosyaların üretildiği ortamda kurulup uçtan uca çalıştırılamadı; ilk ders öncesi kendi bilgisayarınızda preflight ve 5–8 soru doğrulaması zorunludur. `requirements-lock.txt` gerçek kurulumdan sonra oluşturulmalıdır.
-- `chroma_kampus` klasörü yalnızca bu eğitim verisi içindir. `d5_04_index.py` tekrar çalıştırıldığında bu klasör silinip indeks yeniden oluşturulur. Gerçek veride asla kullanmayın.
-
-## Çevrim dışı yedek
-
-```bash
-python offline_yedek.py
-```
-
-Bu script **RAG değil**, yalnızca standart Python ile anahtar kelime eşleşmesi gösterir. Ollama/Chroma arızalanırsa kavram tartışması ve kıyaslama için kullanın; çalışan RAG gibi sunmayın.
-
-## Resmî dokümanlar
-- https://reference.langchain.com/python/langchain-ollama
-- https://reference.langchain.com/python/langchain-chroma/vectorstores/Chroma
-- https://reference.langchain.com/python/langchain-text-splitters/character/RecursiveCharacterTextSplitter
-- https://docs.ollama.com/api
+İlk scriptler yalnızca `data/` içindeki dosyaları okur. Embedding ve cevap üreten scriptler 1. adımdaki Ollama'ya `http://127.0.0.1:11434` üzerinden istek atar. İndeks scripti vektörleri ayrı bir sunucuya değil, `chroma_kampus/` klasörüne yazar. Bu klasör yerelde kalır ve git'e girmez.
