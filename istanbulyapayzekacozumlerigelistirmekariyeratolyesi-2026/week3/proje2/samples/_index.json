@@ -1,0 +1,92 @@
+[
+  {
+    "uid": "7faff790-2365-4263-af9a-42c3fcb991ac",
+    "ok": true,
+    "image": "7faff790-2365-4263-af9a-42c3fcb991ac.webp",
+    "md": "7faff790-2365-4263-af9a-42c3fcb991ac.md",
+    "bytes": 3103786,
+    "ottoman_chars": 1784,
+    "latin_chars": 2200
+  },
+  {
+    "uid": "54cfd4a4-80d3-4aae-8c65-a12c604af9da",
+    "ok": true,
+    "image": "54cfd4a4-80d3-4aae-8c65-a12c604af9da.webp",
+    "md": "54cfd4a4-80d3-4aae-8c65-a12c604af9da.md",
+    "bytes": 563314,
+    "ottoman_chars": 2218,
+    "latin_chars": 2882
+  },
+  {
+    "uid": "2a07266b-88bf-4753-a2a9-7409d6844f75",
+    "ok": true,
+    "image": "2a07266b-88bf-4753-a2a9-7409d6844f75.webp",
+    "md": "2a07266b-88bf-4753-a2a9-7409d6844f75.md",
+    "bytes": 280370,
+    "ottoman_chars": 842,
+    "latin_chars": 1100
+  },
+  {
+    "uid": "e184a222-09fc-4cdf-90eb-b18fc114687f",
+    "ok": true,
+    "image": "e184a222-09fc-4cdf-90eb-b18fc114687f.webp",
+    "md": "e184a222-09fc-4cdf-90eb-b18fc114687f.md",
+    "bytes": 2848440,
+    "ottoman_chars": 2092,
+    "latin_chars": 2701
+  },
+  {
+    "uid": "675e3a55-9125-4502-8f60-b8a5ab6af227",
+    "ok": true,
+    "image": "675e3a55-9125-4502-8f60-b8a5ab6af227.webp",
+    "md": "675e3a55-9125-4502-8f60-b8a5ab6af227.md",
+    "bytes": 1915234,
+    "ottoman_chars": 3089,
+    "latin_chars": 3774
+  },
+  {
+    "uid": "59bfad3a-c826-4e4e-8bb4-d221555f6723",
+    "ok": true,
+    "image": "59bfad3a-c826-4e4e-8bb4-d221555f6723.webp",
+    "md": "59bfad3a-c826-4e4e-8bb4-d221555f6723.md",
+    "bytes": 1236520,
+    "ottoman_chars": 1882,
+    "latin_chars": 2330
+  },
+  {
+    "uid": "9f4d36d5-9c15-45e7-8636-b86d48b3c148",
+    "ok": true,
+    "image": "9f4d36d5-9c15-45e7-8636-b86d48b3c148.webp",
+    "md": "9f4d36d5-9c15-45e7-8636-b86d48b3c148.md",
+    "bytes": 232336,
+    "ottoman_chars": 908,
+    "latin_chars": 1126
+  },
+  {
+    "uid": "6ee57af0-af41-4640-914f-0d18609020cc",
+    "ok": true,
+    "image": "6ee57af0-af41-4640-914f-0d18609020cc.webp",
+    "md": "6ee57af0-af41-4640-914f-0d18609020cc.md",
+    "bytes": 212710,
+    "ottoman_chars": 743,
+    "latin_chars": 975
+  },
+  {
+    "uid": "4f4de7c7-076d-4abe-8bd4-ab6ca18b670a",
+    "ok": true,
+    "image": "4f4de7c7-076d-4abe-8bd4-ab6ca18b670a.webp",
+    "md": "4f4de7c7-076d-4abe-8bd4-ab6ca18b670a.md",
+    "bytes": 721330,
+    "ottoman_chars": 1244,
+    "latin_chars": 1591
+  },
+  {
+    "uid": "2d16a812-a123-4f29-9d3d-34d3c0be1498",
+    "ok": true,
+    "image": "2d16a812-a123-4f29-9d3d-34d3c0be1498.webp",
+    "md": "2d16a812-a123-4f29-9d3d-34d3c0be1498.md",
+    "bytes": 1295242,
+    "ottoman_chars": 1266,
+    "latin_chars": 1589
+  }
+]
