@@ -18,7 +18,8 @@ def ensure_ready() -> None:
     if _ready:
         return
     init_db()
-    if ilan_count() == 0:
+    # Vercel /tmp soğuk başlangıçta boş veya yarım kalabilir; seed'i doldur.
+    if ilan_count() < 10:
         import_items(load_seed())
     _ready = True
 

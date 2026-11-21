@@ -31,22 +31,26 @@ def import_items(items: list[dict]) -> int:
                 kazanan.get("sonuc_tarihi"),
                 conn,
             )
-        raw = RAW_DIR / f"{item['ikn'].replace('/', '_')}.md"
-        RAW_DIR.mkdir(parents=True, exist_ok=True)
-        raw.write_text(
-            f"# {item['baslik']}\n\n"
-            f"İKN: {item['ikn']}\n"
-            f"Kurum: {item.get('kurum')}\n"
-            f"İl: {item.get('il')}\n"
-            f"İlan tarihi: {item.get('ilan_tarihi')}\n"
-            f"Teklif tarihi: {item.get('teklif_tarihi')}\n"
-            f"Tür: {item.get('tur')}\n"
-            f"OKAS: {item.get('okas')}\n"
-            f"Durum: {item.get('durum')}\n"
-            f"URL: {item.get('url')}\n\n"
-            f"{item.get('ozet_text', '')}\n",
-            encoding="utf-8",
-        )
+        try:
+            raw = RAW_DIR / f"{item['ikn'].replace('/', '_')}.md"
+            RAW_DIR.mkdir(parents=True, exist_ok=True)
+            raw.write_text(
+                f"# {item['baslik']}\n\n"
+                f"İKN: {item['ikn']}\n"
+                f"Kurum: {item.get('kurum')}\n"
+                f"İl: {item.get('il')}\n"
+                f"İlan tarihi: {item.get('ilan_tarihi')}\n"
+                f"Teklif tarihi: {item.get('teklif_tarihi')}\n"
+                f"Tür: {item.get('tur')}\n"
+                f"OKAS: {item.get('okas')}\n"
+                f"Durum: {item.get('durum')}\n"
+                f"URL: {item.get('url')}\n\n"
+                f"{item.get('ozet_text', '')}\n",
+                encoding="utf-8",
+            )
+        except OSError:
+            # Canlı ortamda ham metin yazılamasa da ilan kaydı devam eder.
+            pass
         n += 1
     conn.close()
     return n
