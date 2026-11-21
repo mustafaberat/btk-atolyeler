@@ -5,7 +5,7 @@ from typing import Any
 
 from config import CHAT_MODEL, OLLAMA_URL
 from models import create_lead, get_firma, get_ilan, get_or_create_firma, load_profil
-from rag import ollama_ready
+from runtime import ollama_ready
 
 
 def draft_mail(

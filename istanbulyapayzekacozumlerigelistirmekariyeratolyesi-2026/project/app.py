@@ -19,7 +19,8 @@ from models import (
     update_basvuru_durum,
     update_lead_durum,
 )
-from rag import answer_question, ollama_ready, rebuild_index
+from rag import answer_question, rebuild_index
+from runtime import ollama_ready
 from score import score_ilan
 from scrape_ilanlar import import_items, load_seed
 

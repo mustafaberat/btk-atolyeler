@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 
 from config import CHAT_MODEL, OLLAMA_URL, RAW_DIR
 from models import create_basvuru, get_ilan, load_profil
-from rag import ollama_ready
+from runtime import ollama_ready
 from score import score_ilan
 
 StageCb = Callable[[str, str, dict[str, Any] | None], None]

@@ -7,7 +7,7 @@ from typing import Any
 
 from config import CHAT_MODEL, OLLAMA_URL
 from models import load_profil
-from rag import ollama_ready
+from runtime import ollama_ready
 
 
 def _heuristic(ilan: dict[str, Any], profil: dict[str, Any]) -> dict[str, Any]:

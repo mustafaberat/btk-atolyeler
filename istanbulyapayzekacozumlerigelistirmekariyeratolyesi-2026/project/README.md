@@ -127,7 +127,16 @@ Aynı profil, SAP ağırlıklı ilan `2026/1839882` (Darphane, İstanbul, Basis 
 cd project
 python3.12 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt          # canlı web (Flask)
+pip install -r requirements-rag.txt      # Streamlit + RAG / Ollama
+```
+
+Canlı web (yerel):
+
+```bash
+python web.py
+# veya
+flask --app main run --port 8765
 ```
 
 Ollama (RAG / LLM için):

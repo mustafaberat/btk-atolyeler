@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "flask",
+  "installCommand": "pip install -r requirements.txt",
+  "functions": {
+    "main.py": {
+      "maxDuration": 30,
+      "excludeFiles": "{.venv/**,__pycache__/**,chroma_ekap/**,sunum/**,*.docx,*.pdf,app.py,rag.py,eval.py,requirements-rag.txt}"
+    }
+  }
+}

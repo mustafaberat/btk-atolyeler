@@ -13,6 +13,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from config import CHAT_MODEL, CHROMA_DIR, COLLECTION, EMBED_MODEL, OLLAMA_URL, RAW_DIR
 from models import list_ilanlar
+from runtime import ollama_ready
 
 
 SYSTEM = (
@@ -22,16 +23,6 @@ SYSTEM = (
     "Kanıt yoksa aynen 'Bu bilgi dokümanlarda bulunamadı.' de. "
     "İddiaları [K1], [K2] gibi etiketlerle destekle."
 )
-
-
-def ollama_ready() -> bool:
-    try:
-        from urllib.request import urlopen
-
-        with urlopen(f"{OLLAMA_URL}/api/tags", timeout=3) as resp:
-            return resp.status == 200
-    except Exception:
-        return False
 
 
 def build_documents() -> list[Document]:

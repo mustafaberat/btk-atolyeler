@@ -1,0 +1,9 @@
+.venv
+__pycache__
+chroma_ekap
+data/app.db
+sunum
+*.docx
+*.pdf
+.Python
+*.pyc
