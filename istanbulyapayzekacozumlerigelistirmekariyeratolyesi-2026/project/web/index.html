@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EKAP Radar</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <p class="kicker">Kamu yazılım ihalesi</p>
+      <h1>EKAP Radar</h1>
+    </div>
+    <p class="lede">İlanı gör. Sana uyar mı, bak. Kazanan firmaya yaz.</p>
+  </header>
+
+  <section class="questions" aria-label="Üç soru">
+    <article><span>01</span><strong>Yeni yazılım ihalesi var mı?</strong></article>
+    <article><span>02</span><strong>Profilime uyar mı?</strong></article>
+    <article><span>03</span><strong>Kim kazandı?</strong></article>
+  </section>
+
+  <ol class="steps">
+    <li><b>Al</b><span>İlan → SQLite</span></li>
+    <li><b>Oku</b><span>Ham metin</span></li>
+    <li><b>Skorla</b><span>Uyar / Kısmen / Uymaz</span></li>
+    <li><b>Sor</b><span>RAG · [K1]</span></li>
+    <li><b>Yaz</b><span>Taslak, gönderilmez</span></li>
+  </ol>
+
+  <main class="desk">
+    <section class="list-pane">
+      <form class="filters" id="filters">
+        <label>Ara
+          <input id="q" name="q" type="search" placeholder="ERP, mobil, İSKİ…" />
+        </label>
+        <label>İl
+          <input id="il" name="il" type="search" placeholder="İstanbul" />
+        </label>
+        <label>Durum
+          <select id="durum" name="durum">
+            <option value="">Tümü</option>
+            <option value="aktif">Aktif</option>
+            <option value="sonuclanmis">Sonuçlanmış</option>
+          </select>
+        </label>
+        <button type="button" class="ghost" id="demo">Kurumsoft demosu</button>
+      </form>
+      <p class="count" id="count"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>İKN</th>
+              <th>İhale</th>
+              <th>İl</th>
+              <th>Teklif</th>
+              <th>Durum</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="detail" id="detail">
+      <p class="empty">Soldan bir ilan seç.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
